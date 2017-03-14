@@ -26,6 +26,10 @@
       <li><%= !@event.includes_drink ? ("<del>come thirsty</del>").html_safe : "come thirsty" %></li>
       <li><%= !@event.active ? ("<del>active</del>").html_safe : "active" %></li>
 
+      <h4>Categories</h4>
+      <% @categories.each do |category| %>
+        <span class="label label-success"><%= category.name %></span>
+      <% end %>
   </div>
 
 </div>

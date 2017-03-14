@@ -28,7 +28,7 @@
   <div class="form-group">
     <%= f.check_box :includes_food%> come hungry
   </div>
-  
+
   <div class="form-group">
     <label>Event Price</label>
     <div class="input-group">
@@ -36,6 +36,14 @@
       <%= f.number_field :price, placeholder: "eg. 100", class: "form-control" %>
     </div>
   </div>
+
+  <label>Themes</label>
+
+  <%= f.collection_check_boxes(:category_ids, Category.all, :id, :name) do |b| %>
+  <div class="form-group">
+    <%= b.check_box(class: "check_box") %> <%= b.object.name %>
+  </div>
+<% end %>
 
   <label>Publish this event?</label>
 
