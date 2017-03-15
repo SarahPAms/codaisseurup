@@ -1,5 +1,5 @@
 FactoryGirl.define do
-  factory :room do
+  factory :event do
     name              { Faker::Educator.course }
     description       { Faker::Lorem.sentence }
     location          { Faker::Address.street_address }
