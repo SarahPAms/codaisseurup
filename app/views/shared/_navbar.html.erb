@@ -9,6 +9,7 @@
         <span class="icon-bar"></span>
       </button>
       <%= link_to "Codaisseurup", root_path, class: "navbar-brand" %>
+      <%= link_to "About", about_path %>
     </div>
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav navbar-right">
@@ -35,6 +36,7 @@
               <li role="separator" class="divider"></li>
               <li><%= link_to "Log out", destroy_user_session_path, method: :delete %></li>
             </ul>
+              <li> <%= link_to "About", about_path %></li>
         <% end %>
     </div><!--/.nav-collapse -->
   </div>
