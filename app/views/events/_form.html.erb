@@ -16,11 +16,19 @@
 
   <div class="form-group">
     <label>Number of People</label>
-    <%= f.number_field :capacity, placeholder: "address goes here", class: "form-control" %>
+    <%= f.number_field :capacity, placeholder: "25", class: "form-control" %>
+
+  <div class="form-group">
+    <label>When does it start?</label>
+    <%= f.datetime_field :starts_at, placeholder: 10.days.from_now, class: "form-control" %>
+
+  <div class="form-group">
+    <label>When does it end?</label>
+    <%= f.datetime_field :ends_at, placeholder: 10.days.from_now + 1.hour, class: "form-control" %>
 
   </div>
 
-  <label>Amenities</label>
+  <label>Bonus</label>
 
   <div class="form-group">
     <%= f.check_box :includes_drink %> come thirsty
