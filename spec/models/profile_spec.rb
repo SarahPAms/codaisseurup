@@ -15,5 +15,14 @@ RSpec.describe Profile, type: :model do
     it "does not return profiles that start with the wrong letter" do
       expect(subject).not_to include profile3
     end
+
+    describe "association with profile" do
+      let(:user) {create :user}
+      let!(:profile) {create :profile, user: user}
+
+      it "cascades dependent deletions" do
+        expect { user.destroy }.to change(Event, :count).by(-1)
+      end
+    end
   end
 end
