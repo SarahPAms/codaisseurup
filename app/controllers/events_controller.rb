@@ -22,7 +22,6 @@ class EventsController < ApplicationController
       image_params.each do |image|
         @event.photos.create(image: image)
       end
-
       redirect_to edit_event_path(@event), notice: "Event successfully created"
     else
       render :new
@@ -33,7 +32,7 @@ class EventsController < ApplicationController
     if current_user.id == @event.user.id
       @photos= @event.photos
     else
-      redirect_to rot_path, notice: "You don't have permission to make that modification."
+      redirect_to root_path, notice: "You don't have permission to make that modification."
     end
   end
 
@@ -41,24 +40,23 @@ class EventsController < ApplicationController
     if @event.update(event_params)
       image_params.each do |image|
         @event.photos.create(image: image)
-      end
-
+    end
       redirect_to edit_event_path(@event), notice: "Event successfully updated"
     else
-      render :edit
+        render :edit
     end
   end
 
   private
-  def set_event
-    @event = Event.find(params[:id])
-  end
+    def set_event
+      @event = Event.find(params[:id])
+    end
 
-  def event_params
-    params.require(:event).permit(:name, :description, :location, :price, :capacity, :includes_food, :includes_drinks, :starts_at, :ends_at, :active, category_ids: [])
-  end
+    def event_params
+      params.require(:event).permit(:name, :description, :location, :price, :capacity, :includes_food, :includes_drinks, :starts_at, :ends_at, :active, category_ids: [])
+    end
 
-  def image_params
-    params[:images].present? ? params.require(:image) : []
-  end
+    def image_params
+      params[:images].present? ? params.require(:images) : []
+    end
 end

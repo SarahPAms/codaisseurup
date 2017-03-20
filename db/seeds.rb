@@ -18,6 +18,13 @@ Event.create!( name: "Monthly Yoga Weekend",
 description: "Let's come together and practice some asanas together in the woods!", location: "Amsterdam", includes_food: false, includes_drink: true, price: 10.00,
 starts_at: 10.days.from_now, ends_at: 12.days.from_now, capacity: 100, active: true, user: miriam, photos: [photo1])
 
+puts "#{Category.all.size} categories created"
+
+# Events
+event = Event.find_by(name: "Monthly Yoga Weekend")
+event.categories << Category.find_by(name: "Outdoors & Adventure")
+event.categories << Category.find_by(name: "Sports & Fitness")
+
 #Categories
  Category.create!([
    { name: "Movements" },
